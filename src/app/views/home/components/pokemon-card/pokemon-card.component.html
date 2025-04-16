@@ -1,0 +1,28 @@
+<div class="pokemon-card">
+  <app-dialog-box size="small" [hoverable]="true" [backgroundStyles]="backgroundStyles">
+    @if (!isBusy) {
+    <a class="pokemon pokemon-card__content" routerLink="pokemon/{{ id }}">
+      <!-- Pokémon number -->
+      <span class="pokemon__number">{{ id | pokemonNumber }}</span>
+
+      @if (!animated) {
+      <!-- Static sprite -->
+      <div class="pokemon__image" [ngStyle]="id | pokemonSpritePosition : _pokedexVersion"></div>
+      } @else {
+      <!-- Animated sprite -->
+      <div
+        class="pokemon__image-animated"
+        [ngStyle]="{
+          'width.px': width,
+          'height.px': height
+        }"
+      >
+        <img [src]="id | pokemonImageUrl : _pokedexVersion" appLazyImg [alt]="name" />
+      </div>
+      }
+      <!-- Pokémon name -->
+      <span class="pokemon__name">{{ name | pokemonName }}</span>
+    </a>
+    }
+  </app-dialog-box>
+</div>

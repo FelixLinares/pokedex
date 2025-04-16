@@ -1,0 +1,54 @@
+<aside class="sidebar" [ngClass]="{ closed: !showNav }">
+  <app-dialog-box size="small">
+    <div class="filter">
+      <button class="toggle-nav-btn" (click)="showNav = !showNav">
+        @if (showNav) {
+        <fa-icon [icon]="iconTimes"></fa-icon>
+        } @if (!showNav) {
+        <fa-icon [icon]="iconSearch"></fa-icon>
+        }
+      </button>
+      <div class="form-group">
+        <label class="label" for="field-version">{{ 'VERSION' | translate }}:</label>
+        <select
+          name="field-version"
+          id="field-version"
+          [ngModel]="currentVersionId"
+          (ngModelChange)="changeVersion($event)"
+        >
+          @for (version of pokedexVersions; track version) {
+          <option [value]="version.id">
+            {{ version.name | i18nKey | translate }}
+          </option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="label" for="field-name">{{ 'POKEMON_NAME' | translate }}:</label>
+        <input
+          id="field-name"
+          type="text"
+          [ngModel]="currentPokemonName"
+          (ngModelChange)="changePokemonName($event)"
+          [maxlength]="10"
+        />
+      </div>
+      <div class="form-group">
+        <label class="label" for="field-type">{{ 'POKEMON_TYPE' | translate }}:</label>
+        <select
+          name="field-type"
+          id="field-type"
+          [ngModel]="currentPokemonTypeId"
+          (ngModelChange)="changePokemonType($event)"
+        >
+          <option value="0">{{ 'ALL' | translate }}</option>
+          @for (pokemonType of pokemonTypes; track pokemonType) {
+          <option [value]="pokemonType.id">
+            {{ pokemonType.name | i18nKey | translate }}
+          </option>
+          }
+        </select>
+      </div>
+    </div>
+  </app-dialog-box>
+</aside>

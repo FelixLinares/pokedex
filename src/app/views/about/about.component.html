@@ -1,0 +1,23 @@
+<section class="about">
+  <app-dialog-box size="large">
+    <h1>POKÉDEX</h1>
+    <p
+      [innerHTML]="
+        'ABOUT_MESSAGE'
+          | translate
+            : {
+                homeAngular: homeAngular,
+                homePokeApi: homePokeApi,
+                pokedexGithub: pokedexGithub,
+                keilerLinkedin: keilerLinkedin
+              }
+      "
+    ></p>
+
+    <div class="about__img-container">
+      <img ngSrc="./assets/images/professor.png" alt="" width="224" height="224" priority />
+    </div>
+
+    <a class="button button--black" routerLink="/">{{ 'HOME' | translate }}</a>
+  </app-dialog-box>
+</section>

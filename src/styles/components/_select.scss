@@ -1,0 +1,20 @@
+@import '../utils/colors';
+@import '../utils/font-sizes';
+@import '../utils/transition';
+
+select {
+  border: 1px solid $shark;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0 6px;
+  height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-family: $roboto;
+  transition: $fast;
+
+  &:hover {
+    border-color: $crimson;
+  }
+}

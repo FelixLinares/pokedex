@@ -1,0 +1,35 @@
+<app-dialog-box size="large">
+  <div class="pokedex-entries">
+    <!-- Title -->
+    <span class="pokedex-entries__title">
+      @if (isBusy) {
+      <span>{{ 'LOADING_MESSAGE' | translate }}</span>
+      } @if (!isBusy) {
+      <span>{{ 'POKEDEX_ENTRIES' | translate }}</span>
+      }
+    </span>
+    <div class="pokedex-entries__entries">
+      @if (!isBusy && pokemonSpecie) { @for (flavorTextEntry of pokemonSpecie.flavorTexts; track
+      flavorTextEntry; let odd = $odd) {
+      <!-- Version name(s) -->
+      <div
+        class="pokedex-entries__version-names"
+        [ngClass]="{ 'pokedex-entries__version-names--odd': odd }"
+      >
+        @for (versionName of flavorTextEntry.versionNames; track versionName) {
+        <span [ngClass]="versionName" class="pokedex-entries__version-name">
+          {{ versionName | i18nKey | translate }} </span
+        ><br />
+        }
+      </div>
+      <!-- Pokédex flavor text entry -->
+      <p
+        class="pokedex-entries__flavor-text"
+        [ngClass]="{ 'pokedex-entries__flavor-text--odd': odd }"
+      >
+        {{ flavorTextEntry.text }}
+      </p>
+      } }
+    </div>
+  </div>
+</app-dialog-box>

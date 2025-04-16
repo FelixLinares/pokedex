@@ -1,0 +1,43 @@
+@import 'typography';
+@import '../utils/transition';
+
+html {
+  /// Prevent horizontal scroll
+  max-width: 100%;
+  overflow-x: hidden;
+
+  /// Show vertical scroll
+  overflow-y: scroll;
+
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    /// Set Pokémon Font as main font
+    font-size: 16px;
+    font-family: $pokemonFont;
+    line-height: 1.8;
+
+    /// Fix font smoothing on MacOS
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /// Prevent horizontal scroll
+    max-width: 100%;
+
+    min-height: 100vh;
+    margin: 0;
+    flex: 1;
+
+    [hidden] {
+      display: none !important;
+    }
+  }
+}

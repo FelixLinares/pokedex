@@ -1,0 +1,30 @@
+@import 'base/typography';
+@import 'utils/media-query';
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2em 0;
+
+  h1 {
+    margin-top: 0;
+  }
+
+  p {
+    margin: 0;
+    padding-bottom: 2em;
+    font-family: $roboto;
+  }
+
+  &__img-container {
+    text-align: center;
+
+    img {
+      image-rendering: pixelated;
+    }
+  }
+}

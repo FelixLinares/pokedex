@@ -1,0 +1,11 @@
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100%;
+
+  .layout__content {
+    background-color: aliceblue;
+    padding-top: 50px;
+    width: 100%;
+  }
+}

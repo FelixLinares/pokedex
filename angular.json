@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pokedex-angular": {
+    "angular-pokedex": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,16 +20,22 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/pokedex-angular",
+            "outputPath": "dist/angular-pokedex",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/og-image.jpg", "src/assets", "src/404.html"],
+            "assets": [
+              "src/favicon.ico",
+              "src/og-image.jpg",
+              "src/assets",
+              "src/404.html",
+              "src/manifest.webmanifest"
+            ],
             "styles": ["src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/assets/styles"]
+              "includePaths": ["src/styles"]
             },
             "scripts": [],
             "customWebpackConfig": {
@@ -37,7 +43,9 @@
               "mergeRules": {
                 "externals": "replace"
               }
-            }
+            },
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -76,10 +84,10 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pokedex-angular:build:production"
+              "buildTarget": "angular-pokedex:build:production"
             },
             "development": {
-              "browserTarget": "pokedex-angular:build:development"
+              "buildTarget": "angular-pokedex:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +95,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pokedex-angular:build"
+            "buildTarget": "angular-pokedex:build"
           }
         },
         "test": {
@@ -101,7 +109,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/assets/styles"]
+              "includePaths": ["src/styles"]
             },
             "scripts": [],
             "customWebpackConfig": {
@@ -124,5 +132,13 @@
   "cli": {
     "schematicCollections": ["@angular-eslint/schematics"],
     "analytics": false
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
+    }
   }
 }

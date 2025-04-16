@@ -1,0 +1,56 @@
+<nav class="navbar">
+  <ul class="desktop-navbar">
+    <li>
+      <a class="button button--white" [routerLink]="'/'">{{ 'HOME' | translate }}</a>
+    </li>
+    <li>
+      <button class="button button--white" (click)="onToggleLanguage()">
+        {{ 'LANGUAGE' | translate }}: {{ currentLanguage.name }}
+      </button>
+    </li>
+    <li>
+      <a class="button button--white" [routerLink]="'/about'">{{ 'ABOUT' | translate }}</a>
+    </li>
+    <li>
+      <a class="button button--white icon" [href]="pokedexGithub" target="_blank"
+        ><fa-icon [icon]="iconGithub"></fa-icon
+      ></a>
+    </li>
+    <li>
+      <a class="button button--white icon" [href]="keilerLinkedin" target="_blank"
+        ><fa-icon [icon]="iconLinkedin"></fa-icon
+      ></a>
+    </li>
+  </ul>
+
+  <button class="open-sidebar-btn" (click)="showSidebar = true">
+    <fa-icon [icon]="iconBars"></fa-icon>
+  </button>
+
+  <div class="mobile-sidebar" [ngClass]="{ open: showSidebar }">
+    <div class="sidebar-container container container--large">
+      <ul>
+        <li>
+          <a class="button button--black" (click)="goTo('/')">{{ 'HOME' | translate }}</a>
+        </li>
+        <li>
+          <a class="button button--black" (click)="goTo('/about')">{{ 'ABOUT' | translate }}</a>
+        </li>
+        <li>
+          <button class="button button--black" (click)="onToggleLanguage()">
+            {{ 'LANGUAGE' | translate }}: {{ currentLanguage.name }}
+          </button>
+        </li>
+        <li>
+          <a class="button button--black" [href]="pokedexGithub" target="_blank">Github</a>
+        </li>
+        <li>
+          <a class="button button--black" [href]="keilerLinkedin" target="_blank">Linkedin</a>
+        </li>
+      </ul>
+      <button class="close-sidebar-btn" (click)="showSidebar = false">
+        <fa-icon [icon]="iconTimes"></fa-icon>
+      </button>
+    </div>
+  </div>
+</nav>

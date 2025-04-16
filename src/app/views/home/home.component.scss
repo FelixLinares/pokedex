@@ -1,0 +1,81 @@
+@import 'utils/font-sizes';
+@import 'utils/media-query.scss';
+
+.home {
+  &__header {
+    display: flex;
+    align-items: center;
+    height: 154px;
+    width: 254px;
+    margin: 32px auto 0;
+    text-align: center;
+
+    @include respond-to(xs) {
+      display: block;
+      width: auto;
+      margin: 2em 1em 0;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .since-until-years {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        font-size: $font-size-small;
+        padding: 0 1em;
+      }
+
+      img {
+        image-rendering: pixelated;
+      }
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-rows: min-content auto;
+    grid-template-columns: min-content 1fr;
+    margin: 0 1em 1.5em 1em;
+    min-height: calc(100vh - 125px);
+    max-width: 85em;
+    margin: 0 auto;
+    padding: 1.5em 4em 4em;
+
+    grid-template-areas:
+      '. statusbar'
+      'sidebar  pokemon-list';
+
+    @include respond-to(md) {
+      grid-template-areas:
+        'statusbar statusbar'
+        'sidebar  pokemon-list';
+    }
+
+    @include respond(xs, sm) {
+      grid-template-areas:
+        'statusbar'
+        'sidebar'
+        'pokemon-list';
+      grid-template-columns: 1fr;
+      justify-content: center;
+      padding: 4em 1em;
+    }
+  }
+
+  &__status-bar {
+    grid-area: statusbar;
+  }
+
+  &__sidebar {
+    grid-area: sidebar;
+  }
+
+  &__pokemon-list {
+    grid-area: pokemon-list;
+  }
+}

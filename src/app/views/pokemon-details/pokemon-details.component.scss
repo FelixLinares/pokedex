@@ -1,0 +1,47 @@
+@import 'base/typography';
+@import 'utils/colors';
+@import 'utils/font-sizes';
+@import 'utils/media-query';
+@import 'utils/transition';
+
+.pokemon-details {
+  max-width: 700px;
+  margin: 0 auto;
+  min-height: calc(100vh - 50px);
+  padding: 0 0 2em;
+
+  display: grid;
+  grid-gap: 1em;
+  grid-template-rows: auto auto 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    'breadcrumb breadcrumb'
+    'artwork attributes'
+    'description description';
+
+  @include respond(xs, sm) {
+    grid-template-rows: repeat(4, auto);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'breadcrumb'
+      'artwork'
+      'attributes'
+      'description';
+  }
+
+  &__breadcrumb {
+    grid-area: breadcrumb;
+  }
+
+  &__artwork {
+    grid-area: artwork;
+  }
+
+  &__attributes {
+    grid-area: attributes;
+  }
+
+  &__description {
+    grid-area: description;
+  }
+}

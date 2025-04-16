@@ -1,0 +1,36 @@
+@import 'utils/media-query';
+
+.internal-server-error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  @include respond-to(xs) {
+    padding: 2rem 1rem;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  h2 {
+    padding: 0 2em;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  &__img-container {
+    padding: 2em 0;
+    text-align: center;
+
+    img {
+      image-rendering: pixelated;
+    }
+  }
+}
